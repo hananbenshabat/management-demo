@@ -1,0 +1,18 @@
+p-table {
+    height: 100%;
+
+    .p-datatable {
+        .p-datatable-table-container {
+            flex: 1;
+
+            p-scroller {
+                height: 100%;
+            }
+
+            .p-datatable-table {
+                border-collapse: initial;
+                table-layout: fixed;
+            }
+        }
+    }
+}

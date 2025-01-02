@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'tenon';
+
+    &,
+    body {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+
+        app-root {
+            &,
+            .app-layout,
+            .app-layout > :not(router-outlet) {
+                display: inherit;
+                flex-direction: inherit;
+                flex: 1;
+            }
+
+            .app-layout {
+                padding: 18px;
+            }
+        }
+    }
+
+    body {
+        margin: 0;
+    }
+}

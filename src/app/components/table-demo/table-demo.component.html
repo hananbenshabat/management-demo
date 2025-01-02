@@ -1,0 +1,59 @@
+<p-table
+    [style]="{
+        height: '100%',
+        border: 'solid 1px #a0a0a0'
+    }"
+    [value]="data"
+    [scrollable]="true"
+    scrollHeight="flex"
+    [virtualScroll]="true"
+    [virtualScrollItemSize]="38">
+    <ng-template #header let-columns>
+        <tr
+            style="
+                height: 41px;
+                font-size: 13px;
+                --p-icon-size: 10px;
+                --p-datatable-header-cell-background: rgb(245, 245, 245);
+                --p-datatable-column-title-font-weight: 300;
+                --p-datatable-header-cell-padding: 0.5rem 1rem;
+                --p-datatable-header-cell-selected-color: --p-datatable-header-cell-color;
+                --p-datatable-header-cell-selected-background: #edf1f1;
+            ">
+            <th pSortableColumn="type">
+                Type
+                <p-sortIcon field="type" />
+            </th>
+            <th pSortableColumn="appName">
+                Application Name
+                <p-sortIcon field="appName" />
+            </th>
+            <th pSortableColumn="identifiers">
+                Process Name/URL
+                <p-sortIcon field="identifiers" />
+            </th>
+            <th pSortableColumn="rollout">
+                rollout
+                <p-sortIcon field="rollout" />
+            </th>
+            <th pSortableColumn="activities">
+                Activities
+                <p-sortIcon field="activities" />
+            </th>
+            <th pSortableColumn="lastMod">
+                Last Modified
+                <p-sortIcon field="lastMod" />
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-rowData>
+        <tr style="height: 38px; font-size: 13px; font-weight: 300">
+            <td>{{ rowData.type }}</td>
+            <td>{{ rowData.appName }}</td>
+            <td>{{ rowData.identifiers.join(', ') }}</td>
+            <td>{{ rollouts[rowData.rollout] }}</td>
+            <td>{{ rowData.activities }}</td>
+            <td>{{ rowData.lastMod | date:'dd MMM, yyyy' }}</td>
+        </tr>
+    </ng-template>
+</p-table>
