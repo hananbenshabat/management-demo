@@ -1,7 +1,7 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
-import Lara from '@primeng/themes/lara';
+import Nora from '@primeng/themes/nora';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { errorInterceptor } from './interceptors/error.interceptor';
 import { definePreset } from '@primeng/themes';
@@ -9,7 +9,7 @@ import { MessageService } from 'primeng/api';
 import { ROUTES } from './app.routes';
 import { PreloadAllModules, provideRouter, withInMemoryScrolling, withPreloading } from '@angular/router';
 
-const preset = definePreset(Lara, {
+const preset = definePreset(Nora, {
     semantic: {
         primary: {
             50: '{indigo.50}',
@@ -29,6 +29,7 @@ const preset = definePreset(Lara, {
 
 export const appConfig: ApplicationConfig = {
     providers: [
+        provideExperimentalZonelessChangeDetection(),
         provideRouter(ROUTES, withPreloading(PreloadAllModules), withInMemoryScrolling()),
         provideAnimationsAsync(),
         providePrimeNG({

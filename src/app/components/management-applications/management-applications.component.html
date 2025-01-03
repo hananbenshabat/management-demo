@@ -1,0 +1,6 @@
+<toolbar-subheader title="Managed Applications" filterPlaceholder="Search for Applications..."
+                   (filterValueChange)="tableDemoRef.tableApplicationsRef()?.filterGlobal($event, 'contains')" />
+<table-demo #tableDemoRef class="flex flex-col flex-1" style="padding: 18px" [data]="managementApplicationsData"
+            [columns]="managementApplicationsColumns"
+            [filterFields]="managementApplicationsFilterFields"
+            emptyMessage="No Applications Found." />

@@ -3,7 +3,7 @@
 }
 
 html {
-    font-family: 'tenon';
+    font-family: tableau, Arial, sans-serif, tenon;
 
     &,
     body {
@@ -19,10 +19,6 @@ html {
                 display: inherit;
                 flex-direction: inherit;
                 flex: 1;
-            }
-
-            .app-layout {
-                padding: 18px;
             }
         }
     }

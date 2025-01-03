@@ -1,14 +1,13 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Toast } from 'primeng/toast';
 import { RouterOutlet } from '@angular/router';
-import { ToolbarHeaderComponent } from './components/toolbar-header/toolbar-header.component';
-import { ToolbarSubHeaderComponent } from './components/toolbar-subheader/toolbar-subheader.component';
+import { ToolbarCaptionComponent } from './components/toolbar-caption/toolbar-caption.component';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    imports: [Toast, RouterOutlet, ToolbarHeaderComponent, ToolbarSubHeaderComponent],
-    styleUrl: './app.component.scss'
+    styleUrl: './app.component.scss',
+    imports: [Toast, RouterOutlet, ToolbarCaptionComponent]
 })
 export class AppComponent implements AfterViewInit {
     docHTMLRef: HTMLHtmlElement | null = null;
