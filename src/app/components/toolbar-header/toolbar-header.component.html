@@ -1,20 +1,34 @@
-<p-toolbar class="flex flex-1"
-           [style]="{ flex: 1, 'padding-block': 0, 'padding-inline': '17px', 'border': 0, '--p-toolbar-border-radius': 0 }">
-    <div class="p-toolbar-group-start flex items-center" style="gap: 35px">
-        <p-button class="flex font-black"
-                  [style]="{ width: 'max-content', color: 'rgba(0,0,0,0.87)', '--pi-font-weight': 600, '--p-icon-size': '20px', '--p-button-padding-y': 0 }"
-                  icon="pi pi-bars"
-                  [text]="true" />
-        <img class="select-none" style="height: 25px" src="assets/icons/svg/logo.svg" [draggable]="false"
-             alt="Riverbed" />
+<p-toolbar
+    class="flex flex-1"
+    [style]="{
+        flex: 1,
+        'border-width': '0 0 1px',
+        '--p-toolbar-border-radius': 0,
+        '--p-toolbar-background': 'transparent',
+        '--p-toolbar-border-color': 'rgb(199, 199, 199)',
+        '--p-toolbar-padding': '16px 18px'
+    }">
+    <div class="p-toolbar-group-start">
+        @if (title()) {
+            <span class="select-none font-light" style="font-size: 18px">{{ title() }}</span>
+        }
     </div>
-    <div class="p-toolbar-group-end">
-        <p-togglebutton
-            style="--p-togglebutton-border-color: 'transparent'; --p-togglebutton-gap: 0; --p-togglebutton-padding: 0"
-            [onIcon]="'pi pi-sun'"
-            [offIcon]="'pi pi-moon'"
-            onLabel=""
-            offLabel=""
-            (onChange)="docHTMLRef?.classList?.toggle('dark')" />
+    <div class="p-toolbar-group-end flex" style="min-width: 15%">
+        <input
+            #toolbarSubHeaderFilterInputRef
+            id="toolbarSubHeaderFilterInput"
+            class="flex-1"
+            style="
+                --p-inputtext-focus-ring-width: 0;
+                --p-inputtext-sm-font-size: 13px;
+                --p-inputtext-border-color: #a0a0a0;
+                --p-inputtext-border-radius: 0;
+                --p-inputtext-sm-padding-x: 5px;
+                --p-inputtext-sm-padding-y: 3px;
+            "
+            [placeholder]="filterPlaceholder()"
+            pInputText
+            pSize="small"
+            (input)="filterValue.set(toolbarSubHeaderFilterInputRef.value)" />
     </div>
 </p-toolbar>

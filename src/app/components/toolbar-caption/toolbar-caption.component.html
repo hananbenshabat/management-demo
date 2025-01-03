@@ -1,0 +1,20 @@
+<p-toolbar class="flex flex-1"
+           [style]="{ flex: 1, 'padding-block': 0, 'padding-inline': '17px', 'border': 0, '--p-toolbar-border-radius': 0 }">
+    <div class="p-toolbar-group-start flex items-center" style="gap: 35px">
+        <p-button class="flex font-black"
+                  [style]="{ width: 'max-content', color: 'rgba(0,0,0,0.87)', '--pi-font-weight': 600, '--p-icon-size': '20px', '--p-button-padding-y': 0 }"
+                  icon="pi pi-bars"
+                  [text]="true" />
+        <img class="select-none" style="height: 25px" src="assets/icons/svg/logo.svg" [draggable]="false"
+             alt="Riverbed" />
+    </div>
+    <div class="p-toolbar-group-end">
+        <p-togglebutton
+            style="--p-togglebutton-border-color: 'transparent'; --p-togglebutton-gap: 0; --p-togglebutton-padding: 0"
+            [onIcon]="'pi pi-sun'"
+            [offIcon]="'pi pi-moon'"
+            onLabel=""
+            offLabel=""
+            (onChange)="docHTMLRef?.classList?.toggle('dark')" />
+    </div>
+</p-toolbar>
