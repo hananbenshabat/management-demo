@@ -6,17 +6,16 @@
         '--p-toolbar-border-radius': 0,
         '--p-toolbar-background': 'transparent',
         '--p-toolbar-border-color': 'rgb(199, 199, 199)',
-        '--p-toolbar-padding': '16px 18px'
+        '--p-toolbar-padding': '2px 18px'
     }">
     <div class="p-toolbar-group-start">
-        @if (title()) {
-            <span class="select-none font-light" style="font-size: 18px">{{ title() }}</span>
-        }
+        <!--            <span class="select-none font-light" style="font-size: 18px">{{ home() }}</span>-->
+        <p-breadcrumb class="font-light" [model]="items() | removeLastMenuItemRouterLink" />
     </div>
     <div class="p-toolbar-group-end flex" style="min-width: 15%">
         <input
-            #toolbarSubHeaderFilterInputRef
-            id="toolbarSubHeaderFilterInput"
+            #toolbarHeaderFilterInputRef
+            id="toolbarHeaderFilterInput"
             class="flex-1"
             style="
                 --p-inputtext-focus-ring-width: 0;
@@ -29,6 +28,6 @@
             [placeholder]="filterPlaceholder()"
             pInputText
             pSize="small"
-            (input)="filterValue.set(toolbarSubHeaderFilterInputRef.value)" />
+            (input)="filterValue.set(toolbarHeaderFilterInputRef.value)" />
     </div>
 </p-toolbar>

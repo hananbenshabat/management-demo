@@ -3,7 +3,8 @@ import { ToolbarHeaderComponent } from '../toolbar-header/toolbar-header.compone
 import { TableDemoComponent } from '../table-demo/table-demo.component';
 import { UiManagedApplication } from '../../interfaces/ui-managed-application.interface';
 import { IColumn } from '../../interfaces/column.interface';
-import { ActivatedRoute, Data } from '@angular/router';
+import { ActivatedRoute, Data, Params } from '@angular/router';
+import { MenuItem } from 'primeng/api';
 
 @Component({
     selector: 'management-applications',
@@ -21,14 +22,29 @@ export class ManagementApplicationsComponent {
         { field: 'activities', header: 'Activities', style: 'width: 8%;' },
         { field: 'lastMod', header: 'Last Modified', style: 'width: 7%;' }
     ];
-    managementApplicationsFilterFields: (keyof UiManagedApplication)[] =
-        this.managementApplicationsColumns
-            .filter((c: IColumn<UiManagedApplication>): boolean => c.field !== 'lastMod')
-            .flatMap((c: IColumn<UiManagedApplication>): keyof UiManagedApplication => c.field) || [];
+    managementApplicationsFilterFields: (keyof Omit<UiManagedApplication, 'lastMod'>)[] =
+        this.managementApplicationsColumns.flatMap(
+            (c: IColumn<UiManagedApplication>): (keyof Omit<UiManagedApplication, 'lastMod'>)[] =>
+                c.field === 'lastMod' ? [] : [c.field]
+        );
+    home: MenuItem = { label: 'Managed Applications', routerLink: '/' };
+    selectedApplications: MenuItem[] = [this.home];
 
     constructor(private activatedRoute: ActivatedRoute) {
         this.activatedRoute.data.subscribe((data: Data): void => {
             this.managementApplicationsData = data['appsData'] || [];
+        });
+
+        this.activatedRoute.params.subscribe((params: Params): void => {
+            if (params['id']) {
+                const activities = {
+                    label: `${this.managementApplicationsData[0]?.appName} Activities`,
+                    routerLink: params['id']
+                };
+                this.selectedApplications = [this.home, activities];
+            } else {
+                this.selectedApplications = [this.home];
+            }
         });
     }
 }

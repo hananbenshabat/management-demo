@@ -9,9 +9,9 @@
     [scrollable]="true"
     scrollHeight="flex"
     selectionMode="single"
-    [(selection)]="selection"
     [virtualScroll]="true"
     [virtualScrollItemSize]="38"
+    [virtualScrollDelay]="500"
     [globalFilterFields]="filterFields()">
     <ng-template #header let-columns>
         <tr
@@ -36,19 +36,48 @@
         </tr>
     </ng-template>
     <ng-template #body let-rowData let-columns="columns">
-        <tr style="height: 38px; font-size: 13px; font-weight: 300;
-                --p-datatable-body-cell-border-color: #e0e0e0; --p-datatable-body-cell-padding: 0.5rem 1rem; --p-datatable-row-hover-background: #fefaf1"
-            [pSelectableRow]="rowData" [pSelectableRowDisabled]="true">
+        <tr
+            [style]="
+                {
+                    height: '38px',
+                    'font-size': '13px',
+                    'font-weight': 300,
+                    '--p-icon-size': '15px',
+                    '--p-datatable-body-cell-padding': '0 1rem',
+                    '--p-datatable-body-cell-border-color': '#e0e0e0',
+                    color: rowData.enabled ? 'var(--p-datatable-row-color)' : '#cbd2d2',
+                    '--p-datatable-row-hover-background': rowData.enabled ? '#fefaf1' : '#fef8ed',
+                    '--p-datatable-row-background': rowData.enabled ? 'var(--p-content-background)' :'#fcfcfc'
+                }
+            "
+            [pSelectableRow]="rowData"
+            [pSelectableRowDisabled]="true">
             @for (col of columns; track col) {
                 <td class="truncate" [style]="col.style">
                     @switch (col.field) {
+                        @case ('appName') {
+                            @if (!data()[1]) {
+                                {{ rowData[col.field] }}
+                            } @else {
+                                <div class="flex items-center gap-1.5">
+                                    <a [routerLink]="rowData.id">{{ rowData[col.field] }}</a>
+
+                                    @if (rowData.isOOtB) {
+                                        <i class="pi pi-lock" style="--p-icon-size: 10px"
+                                           pTooltip="You can only change some settings and deployment details in a predefined application."
+                                           tooltipPosition="bottom"
+                                           [autoHide]="false"></i>
+                                    }
+                                </div>
+                            }
+                        }
                         @case ('type') {
                             <i class="pi {{ deviceTypeIcons[rowData[col.field]] }}"></i>
                         }
                         @case ('identifiers') {
                             {{ rowData[col.field].join(', ') }}
                         }
-                        @case ('rollouts') {
+                        @case ('rollout') {
                             {{ rollouts[rowData.rollout] }}
                         }
                         @case ('lastMod') {
@@ -63,8 +92,15 @@
         </tr>
     </ng-template>
     <ng-template #emptymessage>
-        <tr style="height: 38px; font-size: 13px; font-weight: 300;
-                --p-datatable-body-cell-border-color: #e0e0e0; --p-datatable-body-cell-padding: 0.5rem 1rem; --p-datatable-row-hover-background: #fefaf1">
+        <tr
+            style="
+                height: 38px;
+                font-size: 13px;
+                font-weight: 300;
+                --p-datatable-body-cell-border-color: #e0e0e0;
+                --p-datatable-body-cell-padding: 0 1rem;
+                --p-datatable-row-hover-background: --p-datatable-row-background;
+            ">
             <td class="select-none" [attr.colspan]="columns().length">
                 {{ emptyMessage() }}
             </td>

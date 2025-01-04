@@ -65,9 +65,7 @@
                             "node_modules/primeicons/primeicons.css",
                             "src/app/styles/tailwind.css",
                             "src/app/styles/fonts/tableau.scss",
-                            "src/app/styles/fonts/tenon.scss",
-                            "src/app/styles/primeng/theme.scss",
-                            "src/app/styles/primeicons.scss",
+                            "src/app/styles/theme.scss",
                             "src/styles.scss"
                         ]
                     },

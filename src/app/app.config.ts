@@ -11,6 +11,10 @@ import { PreloadAllModules, provideRouter, withInMemoryScrolling, withPreloading
 
 const preset = definePreset(Nora, {
     semantic: {
+        focusRing: {
+            width: 0,
+            offset: 0
+        },
         primary: {
             50: '{indigo.50}',
             100: '{indigo.100}',

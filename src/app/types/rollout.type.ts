@@ -6,7 +6,3 @@ export const ROLLOUT_TO_PRETTY: Record<RolloutType, string> = {
     MultipleGroups: 'Multiple Groups',
     Custom: 'Custom'
 };
-
-export function isRolloutType(value: string): value is RolloutType {
-    return value == 'TestGroup' || value == 'All' || value == 'MultipleGroups' || value == 'Custom';
-}

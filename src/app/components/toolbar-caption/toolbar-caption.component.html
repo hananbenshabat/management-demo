@@ -1,12 +1,26 @@
-<p-toolbar class="flex flex-1"
-           [style]="{ flex: 1, 'padding-block': 0, 'padding-inline': '17px', 'border': 0, '--p-toolbar-border-radius': 0 }">
+<p-toolbar
+    class="flex flex-1"
+    [style]="{ flex: 1, 'padding-block': 0, 'padding-inline': '17px', border: 0, '--p-toolbar-border-radius': 0 }">
     <div class="p-toolbar-group-start flex items-center" style="gap: 35px">
-        <p-button class="flex font-black"
-                  [style]="{ width: 'max-content', color: 'rgba(0,0,0,0.87)', '--pi-font-weight': 600, '--p-icon-size': '20px', '--p-button-padding-y': 0 }"
-                  icon="pi pi-bars"
-                  [text]="true" />
-        <img class="select-none" style="height: 25px" src="assets/icons/svg/logo.svg" [draggable]="false"
-             alt="Riverbed" />
+        <p-button
+            class="flex font-black"
+            [style]="{
+                width: 'max-content',
+                color: 'rgba(0,0,0,0.87)',
+                '--pi-font-weight': 600,
+                '--p-icon-size': '20px',
+                '--p-button-padding-y': 0
+            }"
+            icon="pi pi-bars"
+            [text]="true" />
+        <img
+            class="select-none"
+            width="112"
+            height="25"
+            ngSrc="/assets/icons/svg/logo.svg"
+            [draggable]="false"
+            alt="riverbed"
+            priority />
     </div>
     <div class="p-toolbar-group-end">
         <p-togglebutton

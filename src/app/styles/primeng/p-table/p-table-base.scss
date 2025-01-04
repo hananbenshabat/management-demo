@@ -3,15 +3,13 @@ p-table {
 
     .p-datatable {
         .p-datatable-table-container {
-            flex: 1;
-
             p-scroller {
-                height: 100%;
-            }
+                flex: 1;
+                overflow-anchor: none;
 
-            .p-datatable-table {
-                border-collapse: initial;
-                table-layout: fixed;
+                .p-datatable-table {
+                    table-layout: var(--p-datatable-table-layout, fixed);
+                }
             }
         }
     }
