@@ -4,7 +4,7 @@
         "analytics": false
     },
     "projects": {
-        "primeng-demo": {
+        "management-demo": {
             "root": "",
             "sourceRoot": "src",
             "prefix": "",
@@ -50,7 +50,7 @@
                     "options": {
                         "preserveSymlinks": true,
                         "progress": false,
-                        "outputPath": "dist/primeng-demo",
+                        "outputPath": "dist/management-demo",
                         "index": "src/index.html",
                         "browser": "src/main.ts",
                         "tsConfig": "tsconfig.app.json",
@@ -102,10 +102,10 @@
                     "builder": "@angular/build:dev-server",
                     "configurations": {
                         "production": {
-                            "buildTarget": "primeng-demo:build:production"
+                            "buildTarget": "management-demo:build:production"
                         },
                         "development": {
-                            "buildTarget": "primeng-demo:build:development"
+                            "buildTarget": "management-demo:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
