@@ -25,9 +25,9 @@
                 --p-inputtext-sm-padding-x: 5px;
                 --p-inputtext-sm-padding-y: 3px;
             "
-            [placeholder]="filterPlaceholder()"
-            pInputText
             pSize="small"
+            pInputText
+            [placeholder]="filterPlaceholder()"
             (input)="filterValue.set(toolbarHeaderFilterInputRef.value)" />
     </div>
 </p-toolbar>
