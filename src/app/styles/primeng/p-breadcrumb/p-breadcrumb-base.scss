@@ -1,0 +1,14 @@
+.p-breadcrumb {
+    .p-breadcrumb-list {
+        .p-breadcrumb-item {
+            .p-breadcrumb-item-link {
+                --p-breadcrumb-item-color: --p-text-color;
+
+                &:not([target='undefined']) {
+                    --p-breadcrumb-item-color: #2980bf;
+                    --p-breadcrumb-item-hover-color: #2980bf;
+                }
+            }
+        }
+    }
+}

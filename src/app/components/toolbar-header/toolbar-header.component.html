@@ -6,11 +6,13 @@
         '--p-toolbar-border-radius': 0,
         '--p-toolbar-background': 'transparent',
         '--p-toolbar-border-color': 'rgb(199, 199, 199)',
-        '--p-toolbar-padding': '2px 18px'
+        '--p-toolbar-padding': '4px 18px 2px'
     }">
     <div class="p-toolbar-group-start">
-        <!--            <span class="select-none font-light" style="font-size: 18px">{{ home() }}</span>-->
-        <p-breadcrumb class="font-light" [model]="items() | removeLastMenuItemRouterLink" />
+        <p-breadcrumb
+            class="font-light"
+            [style]="{ 'font-size': '18px', '--p-breadcrumb-padding': 0 }"
+            [model]="items() | removeLastMenuItemRouterLink" />
     </div>
     <div class="p-toolbar-group-end flex" style="min-width: 15%">
         <input
@@ -19,11 +21,11 @@
             class="flex-1"
             style="
                 --p-inputtext-focus-ring-width: 0;
-                --p-inputtext-sm-font-size: 13px;
+                --p-inputtext-sm-font-size: 0.813rem;
                 --p-inputtext-border-color: #a0a0a0;
                 --p-inputtext-border-radius: 0;
-                --p-inputtext-sm-padding-x: 5px;
-                --p-inputtext-sm-padding-y: 3px;
+                --p-inputtext-sm-padding-x: 0.313rem;
+                --p-inputtext-sm-padding-y: 0.22rem;
             "
             pSize="small"
             pInputText
